@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<string xmlns="http://www.webserviceX.NET">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;CurrentWeather&gt;
+  &lt;Location&gt;Ahmadabad, India (VAAH) 23-04N 072-38E 55M&lt;/Location&gt;
+  &lt;Time&gt;Sep 25, 2010 - 02:40 PM EDT / 2010.09.25 1840 UTC&lt;/Time&gt;
+  &lt;Wind&gt; from the WNW (300 degrees) at 6 MPH (5 KT):0&lt;/Wind&gt;
+  &lt;Visibility&gt; 2 mile(s):0&lt;/Visibility&gt;
+  &lt;Temperature&gt; 78 F (26 C)&lt;/Temperature&gt;
+  &lt;DewPoint&gt; 68 F (20 C)&lt;/DewPoint&gt;
+  &lt;RelativeHumidity&gt; 69%&lt;/RelativeHumidity&gt;
+  &lt;Pressure&gt; 29.80 in. Hg (1009 hPa)&lt;/Pressure&gt;
+  &lt;Status&gt;Success&lt;/Status&gt;
+&lt;/CurrentWeather&gt;</string>

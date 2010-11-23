@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://geoShape" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://geoShape">
+<wsdl:documentation>GeoShape</wsdl:documentation> 
+<wsdl:types>
+ <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://geoShape">
+ <xs:element name="createShape">
+ <xs:complexType>
+ <xs:sequence>
+  <xs:element minOccurs="0" name="iSides" type="xs:int" /> 
+  <xs:element minOccurs="0" name="iLength" type="xs:int" /> 
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ <xs:element name="createShapeResponse">
+ <xs:complexType>
+ <xs:sequence>
+  <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" /> 
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+ <xs:element name="complexShape">
+ <xs:complexType>
+ <xs:sequence>
+  <xs:element minOccurs="0" name="iSides" type="xs:int" /> 
+  <xs:element minOccurs="0" name="iLength" type="xs:int" /> 
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+  </xs:schema>
+  </wsdl:types>
+ <wsdl:message name="complexShapeRequest">
+  <wsdl:part name="parameters" element="ns:complexShape" /> 
+  </wsdl:message>
+ <wsdl:message name="createShapeRequest">
+  <wsdl:part name="parameters" element="ns:createShape" /> 
+  </wsdl:message>
+ <wsdl:message name="createShapeResponse">
+  <wsdl:part name="parameters" element="ns:createShapeResponse" /> 
+  </wsdl:message>
+ <wsdl:portType name="GeoShapePortType">
+ <wsdl:operation name="complexShape">
+  <wsdl:input message="ns:complexShapeRequest" wsaw:Action="urn:complexShape" /> 
+ </wsdl:operation>
+ <wsdl:operation name="createShape">
+  <wsdl:input message="ns:createShapeRequest" wsaw:Action="urn:createShape" /> 
+  <wsdl:output message="ns:createShapeResponse" wsaw:Action="urn:createShapeResponse" /> 
+  </wsdl:operation>
+  </wsdl:portType>
+ <wsdl:binding name="GeoShapeSoap11Binding" type="ns:GeoShapePortType">
+  <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" /> 
+  <wsdl:operation name="createShape">
+  <soap:operation soapAction="urn:createShape" style="document" /> 
+  <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+ <wsdl:output>
+  <soap:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+ <wsdl:operation name="complexShape">
+  <soap:operation soapAction="urn:complexShape" style="document" /> 
+ <wsdl:input>
+  <soap:body use="literal" /> 
+  </wsdl:input>
+  </wsdl:operation>
+  </wsdl:binding>
+ <wsdl:binding name="GeoShapeSoap12Binding" type="ns:GeoShapePortType">
+  <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" /> 
+ <wsdl:operation name="createShape">
+  <soap12:operation soapAction="urn:createShape" style="document" /> 
+ <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+ <wsdl:output>
+  <soap12:body use="literal" /> 
+  </wsdl:output>
+  </wsdl:operation>
+ <wsdl:operation name="complexShape">
+  <soap12:operation soapAction="urn:complexShape" style="document" /> 
+ <wsdl:input>
+  <soap12:body use="literal" /> 
+  </wsdl:input>
+  </wsdl:operation>
+  </wsdl:binding>
+ <wsdl:binding name="GeoShapeHttpBinding" type="ns:GeoShapePortType">
+  <http:binding verb="POST" /> 
+  <wsdl:operation name="createShape">
+  <http:operation location="GeoShape/createShape" /> 
+ <wsdl:input>
+  <mime:content type="text/xml" part="createShape" /> 
+  </wsdl:input>
+ <wsdl:output>
+  <mime:content type="text/xml" part="createShape" /> 
+  </wsdl:output>
+  </wsdl:operation>
+ <wsdl:operation name="complexShape">
+  <http:operation location="GeoShape/complexShape" /> 
+ <wsdl:input>
+  <mime:content type="text/xml" part="complexShape" /> 
+  </wsdl:input>
+  </wsdl:operation>
+  </wsdl:binding>
+ <wsdl:service name="GeoShape">
+ <wsdl:port name="GeoShapeHttpSoap11Endpoint" binding="ns:GeoShapeSoap11Binding">
+  <soap:address location="http://localhost:8084/axis2/services/GeoShape.GeoShapeHttpSoap11Endpoint/" /> 
+  </wsdl:port>
+ <wsdl:port name="GeoShapeHttpSoap12Endpoint" binding="ns:GeoShapeSoap12Binding">
+  <soap12:address location="http://localhost:8084/axis2/services/GeoShape.GeoShapeHttpSoap12Endpoint/" /> 
+  </wsdl:port>
+ <wsdl:port name="GeoShapeHttpEndpoint" binding="ns:GeoShapeHttpBinding">
+  <http:address location="http://localhost:8084/axis2/services/GeoShape.GeoShapeHttpEndpoint/" /> 
+  </wsdl:port>
+ </wsdl:service>
+</wsdl:definitions>

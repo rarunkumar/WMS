@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CreateShape">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iSides" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateShapeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateShapeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateComplexShape">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iSides" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="iLength" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateComplexShapeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateComplexShapeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateShapeSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateShape" />
+  </wsdl:message>
+  <wsdl:message name="CreateShapeSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateShapeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateComplexShapeSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateComplexShape" />
+  </wsdl:message>
+  <wsdl:message name="CreateComplexShapeSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateComplexShapeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ShapeSoap">
+    <wsdl:operation name="CreateShape">
+      <wsdl:input message="tns:CreateShapeSoapIn" />
+      <wsdl:output message="tns:CreateShapeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateComplexShape">
+      <wsdl:input message="tns:CreateComplexShapeSoapIn" />
+      <wsdl:output message="tns:CreateComplexShapeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ShapeSoap" type="tns:ShapeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateShape">
+      <soap:operation soapAction="http://tempuri.org/CreateShape" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateComplexShape">
+      <soap:operation soapAction="http://tempuri.org/CreateComplexShape" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ShapeSoap12" type="tns:ShapeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateShape">
+      <soap12:operation soapAction="http://tempuri.org/CreateShape" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateComplexShape">
+      <soap12:operation soapAction="http://tempuri.org/CreateComplexShape" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Shape">
+    <wsdl:port name="ShapeSoap" binding="tns:ShapeSoap">
+      <soap:address location="http://localhost:1152/Shape.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ShapeSoap12" binding="tns:ShapeSoap12">
+      <soap12:address location="http://localhost:1152/Shape.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
